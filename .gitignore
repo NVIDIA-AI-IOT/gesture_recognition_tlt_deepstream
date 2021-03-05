@@ -1,0 +1,14 @@
+egohands_dataset/.ipynb_checkpoints
+egohands_dataset/prepare_egohands.py
+training_tlt/data
+training_tlt/egohands
+training_tlt/ngccli
+training_tlt/.ipynb_checkpoints
+training_tlt/handdetect_training_executed.ipynb
+training_tlt_docker_way
+deployment_deepstream/egohands-deepstream-app-trtis/trtis_model_repo/hcgesture_tlt/1/*.plan
+deployment_deepstream/egohands-deepstream-app-trtis/tlt_models/tlt_egohands_qat/*.bin
+deployment_deepstream/egohands-deepstream-app-trtis/tlt_models/tlt_egohands_qat/*.etlt
+deployment_deepstream/egohands-deepstream-app-trtis/tlt_models/tlt_egohands_qat/*.engine
+deployment_deepstream/egohands-deepstream-app-trtis/deepstream-app-bbox/*.o
+
