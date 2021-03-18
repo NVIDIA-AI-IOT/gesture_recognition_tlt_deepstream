@@ -25,12 +25,13 @@ APP:= deepstream-app-bbox
 TARGET_DEVICE = $(shell gcc -dumpmachine | cut -f1 -d -)
 
 NVDS_VERSION:=5.0
+CUDA_VERSION=10.2
 
 LIB_INSTALL_DIR?=/opt/nvidia/deepstream/deepstream-$(NVDS_VERSION)/lib/
 APP_INSTALL_DIR?=/opt/nvidia/deepstream/deepstream-$(NVDS_VERSION)/bin/
 
 ifeq ($(TARGET_DEVICE),aarch64)
-  CFLAGS:= -DPLATFORM_TEGRA
+  CFLAGS+= -DPLATFORM_TEGRA -I /usr/local/cuda-${CUDA_VERSION}/include
 endif
 
 SRCS:= $(wildcard *.c)
@@ -44,7 +45,7 @@ OBJS:= $(SRCS:.c=.o)
 
 CFLAGS+= -I./ -I../../apps-common/includes -I../../../includes -DDS_VERSION_MINOR=0 -DDS_VERSION_MAJOR=5
 
-LIBS+= -L$(LIB_INSTALL_DIR) -lnvdsgst_meta -lnvds_meta -lnvdsgst_helper -lnvdsgst_smartrecord -lnvds_utils -lnvds_msgbroker -lm \
+LIBS+= -L/usr/local/cuda-${CUDA_VERSION}/lib64/ -lcudart -L$(LIB_INSTALL_DIR) -lnvdsgst_meta -lnvds_meta -lnvdsgst_helper -lnvdsgst_smartrecord -lnvds_utils -lnvds_msgbroker -lm \
        -lgstrtspserver-1.0 -ldl -Wl,-rpath,$(LIB_INSTALL_DIR)
 
 CFLAGS+= `pkg-config --cflags $(PKGS)`
