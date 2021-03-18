@@ -31,7 +31,7 @@ LIB_INSTALL_DIR?=/opt/nvidia/deepstream/deepstream-$(NVDS_VERSION)/lib/
 APP_INSTALL_DIR?=/opt/nvidia/deepstream/deepstream-$(NVDS_VERSION)/bin/
 
 ifeq ($(TARGET_DEVICE),aarch64)
-  CFLAGS+= -DPLATFORM_TEGRA -I /usr/local/cuda-${CUDA_VERSION}/include
+  CFLAGS:= -DPLATFORM_TEGRA -I /usr/local/cuda-${CUDA_VERSION}/include
 endif
 
 SRCS:= $(wildcard *.c)
