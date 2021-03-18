@@ -24,7 +24,7 @@ APP:= deepstream-app-bbox
 
 TARGET_DEVICE = $(shell gcc -dumpmachine | cut -f1 -d -)
 
-NVDS_VERSION:=5.0
+NVDS_VERSION:=5.1
 
 LIB_INSTALL_DIR?=/opt/nvidia/deepstream/deepstream-$(NVDS_VERSION)/lib/
 APP_INSTALL_DIR?=/opt/nvidia/deepstream/deepstream-$(NVDS_VERSION)/bin/
@@ -42,10 +42,12 @@ PKGS:= gstreamer-1.0 gstreamer-video-1.0 x11 json-glib-1.0
 
 OBJS:= $(SRCS:.c=.o)
 
-CFLAGS+= -I./ -I../../apps-common/includes -I../../../includes -DDS_VERSION_MINOR=0 -DDS_VERSION_MAJOR=5
+CFLAGS+= -I./ -I../../apps-common/includes -I../../../includes -DDS_VERSION_MINOR=1 -DDS_VERSION_MAJOR=5
+CFLAGS+= -I/usr/local/cuda-10.2/include
 
 LIBS+= -L$(LIB_INSTALL_DIR) -lnvdsgst_meta -lnvds_meta -lnvdsgst_helper -lnvdsgst_smartrecord -lnvds_utils -lnvds_msgbroker -lm \
        -lgstrtspserver-1.0 -ldl -Wl,-rpath,$(LIB_INSTALL_DIR)
+LIBS+= -L/usr/local/cuda-10.2/lib64/ -lcudart -lcuda
 
 CFLAGS+= `pkg-config --cflags $(PKGS)`
 
