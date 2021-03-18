@@ -134,6 +134,21 @@ For this demo, we are using a Jetson Xavier AGX 16Gb. We also tested it on a Jet
 
 If you don't have DeepStream SDK installed with your JetPack version, follow the Jetson setup instructions from the [DeepStream Quick Start Guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html).
 
+The demo we showed you in the webinar is running on the JetPack 4.4 with DeepStream 5.0. We also added support for JetPack 4.5 with DeepStream 5.1. You can select the corresponding version by checking out the correct branch accordingly:
+
+```
+git checkout JetPack4.5-DeepStream5.1
+```
+
+for the `JetPack 4.5 with DeepStream 5.1` combination, and
+
+```
+git checkout JetPack4.4-DeepStream5.0
+```
+
+for `JetPack 4.4 with DeepStream 5.0`.
+
+
 ### Acquiring gesture recognition model
 
 You can download the GestureNet model using either wget method:
