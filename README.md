@@ -125,6 +125,8 @@ For this demo, we are using a Jetson Xavier AGX 16Gb. We also tested it on a Jet
 
 ### Prerequisites 
 
+#### a. Bare metal install
+
 *Note: these are prerequisites specific for Jetson deployment. If you want to repurpose our solution to run on a discrete GPU, check the [DeepStream getting started page](https://developer.nvidia.com/deepstream-getting-started).*
 
 * CUDA 10.2
@@ -134,20 +136,43 @@ For this demo, we are using a Jetson Xavier AGX 16Gb. We also tested it on a Jet
 
 If you don't have DeepStream SDK installed with your JetPack version, follow the Jetson setup instructions from the [DeepStream Quick Start Guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Quickstart.html).
 
-The demo we showed you in the webinar is running on the JetPack 4.4 with DeepStream 5.0. We also added support for JetPack 4.5 with DeepStream 5.1. You can select the corresponding version by checking out the correct branch accordingly:
+#### b. DeepStream-l4t docker container
+
+Alternatively, you can use the DeepStream-l4t docker containers which are pre-installed with all the above mentioned dependencies. Please ensure that you have cloned this repository and mounted it inside the docker container before following the steps below.
+
+You can use the below command to launch the docker container. Make sure to replace `<path-to-this-repo>` and `<name-of-the-docker-image>` with their respective values:
+```
+xhost +
+
+sudo docker run -it --rm --runtime=nvidia -v <path-to-this-repo> --network host -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix -v /tmp/argus_socket:/tmp/argus_socket -v /etc/enctune.conf:/etc/enctune.conf --device /dev/video0 <name-of-the-docker-image>
+```
+
+#### Supported versions
+
+The demo we showed you in the webinar is running on the JetPack 4.4 with DeepStream 5.0. We also added support for JetPack 4.5 with DeepStream 5.1. You can select the corresponding version by checking out the correct branch accordingly.
+
+* For the `JetPack 4.5 with DeepStream 5.1` combination:
 
 ```
 git checkout JetPack4.5-DeepStream5.1
 ```
 
-for the `JetPack 4.5 with DeepStream 5.1` combination, and
+if using Docker:
+
+```
+<name-of-docker-image> = nvcr.io/nvidia/deepstream-l4t:5.1-21.02-samples
+```
+* For `JetPack 4.4 with DeepStream 5.0`:
 
 ```
 git checkout JetPack4.4-DeepStream5.0
 ```
 
-for `JetPack 4.4 with DeepStream 5.0`.
+if using Docker:
 
+```
+<name-of-docker-image> = nvcr.io/nvidia/deepstream-l4t:5.0.1-20.09-samples
+```
 
 ### Acquiring gesture recognition model
 
