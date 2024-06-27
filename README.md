@@ -1,3 +1,7 @@
+# ------------------------------------------------------
+# This sample application is no longer maintained
+# ------------------------------------------------------
+
 # Using NVIDIA Pre-trained Models and Transfer Learning Toolkit 3.0 to Create Gesture-based Interactions with a Robot
 
 In this project, we demonstrate how to train your own gesture recognition deep learning pipeline. We start with a pre-trained detection model, repurpose it for hand detection using Transfer Learning Toolkit 3.0, and use it together with the purpose-built gesture recognition model. Once trained, we deploy this model on NVIDIA® Jetson™. 
